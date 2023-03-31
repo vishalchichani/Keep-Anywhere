@@ -7,8 +7,7 @@ const notesSchema = {
     }, 
     description: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     label: {
         type: String,
