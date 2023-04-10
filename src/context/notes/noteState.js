@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import noteContext from "./noteContext";
 
-const NoteState = () => {
+const NoteState = (props) => {
 
 const notesInitial = [
     {
@@ -22,13 +22,13 @@ const notesInitial = [
       "timestamp": "2023-04-10T09:37:13.322Z",
       "__v": 0
     }
-  ]
+]
 
   const[notes, setNotes] = useState(notesInitial)
     
     return (
         <noteContext.Provider value={{notes, setNotes}} >
-
+            {props.children}
         </noteContext.Provider>
     )
 }
