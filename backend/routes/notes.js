@@ -72,4 +72,36 @@ router.put('/updatenote/:id', fetchuser,
             res.status(501).send("Unknown error occured.");
         }
     })
+
+//Route 4 Delete the note 
+router.delete('/deletenote/:id', fetchuser, 
+    async (req, res) => {
+        try {
+            const { title, description, tag, } = req.body;
+           
+            
+            //Finding the note and deleting it
+
+            let note = await Notes.findById(req.params.id);
+
+            if(!note){
+                return res.status(404).send("Not Found");
+            }
+
+            if(note.user.toString()!== req.user.id){
+                return res.status(401).send("Not Allowed");
+            }
+
+            note = await Notes.findByIdAndDelete(
+                req.params.id
+            )
+            res.json({"Success":"Note has been deleted!"});
+
+            
+        } catch (error) {
+            console.error(error.message);
+            res.status(501).send("Unknown error occured.");
+        }
+    })
+
 module.exports = router;
