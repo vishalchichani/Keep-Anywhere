@@ -13,7 +13,9 @@ const AddNote = () => {
  
   const handleClick = (e) => {
     e.preventDefault();
+    console.log(note.title, note.description, note.tag)
     addNote(note.title, note.description, note.tag);
+    setNote({title:"", description:"", tag:""})
   }
   return (
     <div className="container my-4">
@@ -21,7 +23,7 @@ const AddNote = () => {
     <form>
         <div className="mb-3">
             <label for="title" className="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" />
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={handleChange} />
                 
         </div>
         <div className="mb-3">
