@@ -16,10 +16,14 @@ const Signup = () => {
             body: JSON.stringify({ name,email,password })
         })
         const json = await response.json();
-        if(json.success)
+        if(json.success){
             localStorage.setItem('token', json.authtoken);
             navigate('/')
-        
+        }
+        else{
+            alert("Invalid Credentials");
+        }
+
 
     }
 
@@ -29,6 +33,7 @@ const Signup = () => {
 
     return (
         <div>
+            <h2>Create your iNoteBook account Now!</h2>
             <div className='container my-4 '>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">

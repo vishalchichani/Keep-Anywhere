@@ -15,7 +15,7 @@ const host = "http://localhost:3001";
       method: "GET", 
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQyNzEzNTg4MGM4YTM0Nzc4NmFjNWEwIn0sImlhdCI6MTY4MTExODIxOH0.wh44pVzhI76hGirHyMyqyykM-fX6UNl4Kn2WFl4kC00"
+        "auth-token": localStorage.getItem('token')
       }
     })
     const json =  await response.json();
@@ -28,7 +28,7 @@ const host = "http://localhost:3001";
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQyNzEzNTg4MGM4YTM0Nzc4NmFjNWEwIn0sImlhdCI6MTY4MTExODIxOH0.wh44pVzhI76hGirHyMyqyykM-fX6UNl4Kn2WFl4kC00"
+        "auth-token": localStorage.getItem('token')
       },
       body: JSON.stringify({title,description,tag}), 
     });
@@ -44,7 +44,7 @@ const host = "http://localhost:3001";
       method: "DELETE", 
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQyNzEzNTg4MGM4YTM0Nzc4NmFjNWEwIn0sImlhdCI6MTY4MTExODIxOH0.wh44pVzhI76hGirHyMyqyykM-fX6UNl4Kn2WFl4kC00"
+        "auth-token": localStorage.getItem('token')
       }
     });
      
@@ -60,7 +60,7 @@ const host = "http://localhost:3001";
     method: "PUT", 
     headers: {
       "Content-Type": "application/json",
-      "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQyNzEzNTg4MGM4YTM0Nzc4NmFjNWEwIn0sImlhdCI6MTY4MTExODIxOH0.wh44pVzhI76hGirHyMyqyykM-fX6UNl4Kn2WFl4kC00"
+      "auth-token": localStorage.getItem('token')
     },
     body: JSON.stringify({title,description,tag}), 
   });
