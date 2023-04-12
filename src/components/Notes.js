@@ -34,10 +34,10 @@ const Notes = () => {
     return (
         <div className="container my-4">
             <AddNote />
-            <button ref={ref} type="button" class="btn btn- d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button ref={ref} type="button" className="btn btn- d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
-            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -63,9 +63,9 @@ const Notes = () => {
                                
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button ref = {refClose} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button  disabled={note.etitle.length<5 || note.edescription.length <5} type="button" class="btn btn-primary" onClick={handleClick}>Update Note</button>
+                        <div className="modal-footer">
+                            <button ref = {refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button  disabled={note.etitle.length<5 || note.edescription.length <5} type="button" className="btn btn-primary" onClick={handleClick}>Update Note</button>
                         </div>
                     </div>
                 </div>

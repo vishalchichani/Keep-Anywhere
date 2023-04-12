@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = "Yeahthatsit"; 
 const fetchuser = require('../middleware/fetchuser');
 
+
 //Route 1 
 router.post('/createUser',[
     body('name','Length should atleast be 3 letters').isLength({min: 3}),
@@ -14,6 +15,7 @@ router.post('/createUser',[
     body('password', 'Passowrd should atleast be 5 characters long.').isLength({ min: 5 })
     ],
     async (req,res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array()});
@@ -41,7 +43,8 @@ router.post('/createUser',[
       }
     }
 
-    const jwtData = jwt.sign(data, JWT_SECRET);   
+    const jwtData = jwt.sign(data, JWT_SECRET); 
+    success=true;  
     res.json(jwtData); 
 
     } catch(error) {
@@ -57,6 +60,7 @@ router.post('/login',[
   body('password', 'Password should atleast be 5 characters long.').isLength({ min: 5 })
   ],
   async (req,res) => {
+  let success = false;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array()});
@@ -66,13 +70,14 @@ router.post('/login',[
   try{
     let user = await User.findOne({email});
     if(!user){
-      return res.status(400).json("Wrong Credentials");
+      return res.status(400).json({error:"Wrong Credentials"});
     }
 
   const cmppass =  await bcrypt.compare(password, user.password);
 
   if(!cmppass){
-    return res.status(400).json("Wrong Credentials");
+    success=false;
+    return res.status(400).json(success, {error:"Wrong Credentials"});
   }
 
   const data =  {
@@ -81,8 +86,9 @@ router.post('/login',[
     }
   }
 
-  const jwtData = jwt.sign(data, JWT_SECRET);   
-  res.json(jwtData); 
+  const jwtData = jwt.sign(data, JWT_SECRET); 
+  success=true;  
+  res.json({success, jwtData}); 
 
 } catch(error){
   console.error(error.message);
