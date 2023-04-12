@@ -13,7 +13,7 @@ const Notes = () => {
         <div className="row my-3">
             <h2>Your Notes</h2>
             
-            <div className='d-flex flex-wrap gap-3'>
+            <div className='d-flex flex-wrap gap-4'>
             {notes && notes.map((note) => {
                 return <NoteItem note= {note} />
             })}
