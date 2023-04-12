@@ -4,7 +4,7 @@ const Login = () => {
   const host = "http://localhost:3001"
 
   const [credentials, setCredentials] = useState({ email: "", password: "" })
-  const navigate = useNavigate();
+  let navigate = useNavigate();
   const handleSubmit = async (e) => {
 
     e.preventDefault();
@@ -22,6 +22,8 @@ const Login = () => {
       //Redirect to Home
       localStorage.setItem('token', json.authtoken);
       navigate('/')
+    }else{
+      alert("Invalid Credentials");
     }
 
   }

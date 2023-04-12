@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-const Signup = () => {
+const Signup = (props) => {
 
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
-    const navigate = useNavigate();
+    let navigate = useNavigate();
     const host = "http://localhost:3001";
+    //const { name, email, password } = credentials;
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { name, email, password } = credentials;
@@ -19,11 +20,10 @@ const Signup = () => {
         if (json.success) {
             localStorage.setItem('token', json.authtoken);
             navigate('/')
-        }
-        else {
+        }else{
             alert("Invalid Credentials");
         }
-
+        
 
     }
 
@@ -33,8 +33,9 @@ const Signup = () => {
 
     return (
         <div>
-            <h2>Create your iNoteBook account Now!</h2>
+            
             <div className='container my-4 '>
+            <h2>Create your iNoteBook account Now!</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="name" className="form-label">Name</label>
@@ -42,7 +43,7 @@ const Signup = () => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
-                        <input type="email" className="form-control" value={credentials.email} id="name" name="email" aria-describedby="emailHelp" onChange={handleChange} />
+                        <input type="email" className="form-control" value={credentials.email} id="email" name="email" aria-describedby="emailHelp" onChange={handleChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">Password</label>

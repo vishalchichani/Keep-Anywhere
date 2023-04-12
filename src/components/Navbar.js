@@ -32,7 +32,7 @@ function Navbar() {
                             </li>
 
                         </ul>
-                        {localStorage.getItem('token') ? <form className="d-flex" >
+                        {!localStorage.getItem('token') ? <form className="d-flex" >
                             <Link className="btn btn-primary mx-2" roll="button" to="/login">Login</Link>
                             <Link className="btn btn-primary mx-2" roll="button" to="/signup">Signup</Link>
                         </form> : <button className='btn btn-primary' onClick={handleLogout}> Logout</button>}

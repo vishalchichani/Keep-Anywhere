@@ -9,10 +9,10 @@ const fetchuser = require('../middleware/fetchuser');
 
 
 //Route 1 
-router.post('/createUser', [
+router.post('/createuser', [
   body('name', 'Length should atleast be 3 letters').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
-  body('password', 'Passowrd should atleast be 5 characters long.').isLength({ min: 5 })
+  body('password', 'Password should atleast be 5 characters long.').isLength({ min: 5 })
 ],
   async (req, res) => {
     let success = false;
@@ -43,9 +43,9 @@ router.post('/createUser', [
         }
       }
 
-      const jwtData = jwt.sign(data, JWT_SECRET);
+      const authtoken = jwt.sign(data, JWT_SECRET);
       success = true;
-      res.json(jwtData);
+      res.json({success,authtoken});
 
     } catch (error) {
       console.error(error.message);
@@ -86,9 +86,9 @@ router.post('/login', [
         }
       }
 
-      const jwtData = jwt.sign(data, JWT_SECRET);
+      const authtoken = jwt.sign(data, JWT_SECRET);
       success = true;
-      res.json({ success, jwtData });
+      res.json({ success, authtoken });
 
     } catch (error) {
       console.error(error.message);

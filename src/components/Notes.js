@@ -36,6 +36,7 @@ const Notes = () => {
     e.preventDefault();
     editNote(note.id, note.etitle, note.edescription, note.etag)
     refClose.current.click();
+    console.log(notes);
   }
     return (
         <div className="container my-4">
@@ -83,6 +84,7 @@ const Notes = () => {
                     <div className='container'>
                         {notes.length===0 && "No notes to display"}
                     </div>
+                    
                     {notes && notes.map((note) => {
                         return <NoteItem key={note._id} updateNote={updateNote} note={note} />
                     })}
