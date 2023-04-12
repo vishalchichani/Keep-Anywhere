@@ -1,26 +1,26 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 const Signup = () => {
 
-    const [credentials, setCredentials] = useState({ name:"",email: "", password: "", cpassword:"" })
+    const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
     const navigate = useNavigate();
-    const host= "http://localhost:3001";
+    const host = "http://localhost:3001";
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const {name, email, password} = credentials;
+        const { name, email, password } = credentials;
         const response = await fetch(`${host}/api/auth/createuser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name,email,password })
+            body: JSON.stringify({ name, email, password })
         })
         const json = await response.json();
-        if(json.success){
+        if (json.success) {
             localStorage.setItem('token', json.authtoken);
             navigate('/')
         }
-        else{
+        else {
             alert("Invalid Credentials");
         }
 
@@ -38,7 +38,7 @@ const Signup = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="name" className="form-label">Name</label>
-                        <input type="text" className="form-control" value={credentials.name} id="name" name="name" aria-describedby="emailHelp" onChange={handleChange}  />
+                        <input type="text" className="form-control" value={credentials.name} id="name" name="name" aria-describedby="emailHelp" onChange={handleChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>

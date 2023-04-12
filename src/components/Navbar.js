@@ -1,9 +1,9 @@
 import React from 'react'
 import {
-    Link, useLocation, useNavigate 
-  } from "react-router-dom";
+    Link, useLocation, useNavigate
+} from "react-router-dom";
 
-function Navbar(){
+function Navbar() {
 
     let navigate = useNavigate();
     const handleLogout = () => {
@@ -13,7 +13,7 @@ function Navbar(){
 
     let location = useLocation();
 
-    
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -25,17 +25,17 @@ function Navbar(){
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathway==="/" ? "active" : ""}`} aria-current="page" to="/">Home</Link>
+                                <Link className={`nav-link ${location.pathway === "/" ? "active" : ""}`} aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathway==="/about" ? "active" : ""}`} to="/about">About</Link>
+                                <Link className={`nav-link ${location.pathway === "/about" ? "active" : ""}`} to="/about">About</Link>
                             </li>
-                            
+
                         </ul>
                         {localStorage.getItem('token') ? <form className="d-flex" >
                             <Link className="btn btn-primary mx-2" roll="button" to="/login">Login</Link>
                             <Link className="btn btn-primary mx-2" roll="button" to="/signup">Signup</Link>
-                        </form>: <button className='btn btn-primary' onClick={handleLogout}> Logout</button>}
+                        </form> : <button className='btn btn-primary' onClick={handleLogout}> Logout</button>}
                     </div>
                 </div>
             </nav>
