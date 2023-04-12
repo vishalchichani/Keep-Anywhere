@@ -13,28 +13,28 @@ const AddNote = () => {
  
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(note.title, note.description, note.tag)
     addNote(note.title, note.description, note.tag);
     setNote({title:"", description:"", tag:""})
   }
   return (
     <div className="container my-4">
     <h1>Add a Note</h1>
-    <form>
+    <form className="my-3">
         <div className="mb-3">
-            <label for="title" className="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={handleChange} />
+            <label htmlFor="title" className="form-label">Title</label>
+            <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={handleChange} />
                 
         </div>
         <div className="mb-3">
-            <label for="description" className="form-label">Description</label>
+            <label htmlFor="description" className="form-label">Description</label>
             <input type="text" className="form-control" id="description" name="description" onChange={handleChange}/>
         </div>
-        <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="exampleCheck1" onChange={handleChange} />
-                <label className="form-check-label" for="exampleCheck1">Check me out</label>
+        <div className="mb-3">
+            <label htmlFor="tag" className="form-label">Tag</label>
+            <input type="text" className="form-control" id="tag" name="tag" onChange={handleChange}/>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+        
+        <button type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
     </form>
     </div>
   )
