@@ -65,7 +65,7 @@ const Notes = () => {
                         </div>
                         <div class="modal-footer">
                             <button ref = {refClose} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button   type="button" class="btn btn-primary" onClick={handleClick}>Update Note</button>
+                            <button  disabled={note.etitle.length<5 || note.edescription.length <5} type="button" class="btn btn-primary" onClick={handleClick}>Update Note</button>
                         </div>
                     </div>
                 </div>
@@ -74,6 +74,9 @@ const Notes = () => {
                 <h2>Your Notes</h2>
 
                 <div className='d-flex flex-wrap gap-4'>
+                    <div className='container'>
+                        {notes.length===0 && "No notes to display"}
+                    </div>
                     {notes && notes.map((note) => {
                         return <NoteItem key={note._id} updateNote={updateNote} note={note} />
                     })}
