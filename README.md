@@ -1,4 +1,4 @@
-<h1>iNoteBook</h1>
+<h1>Keep Anywhere</h1>
 
 <p>It is a note-keeper app that will help you store your tasks online so you can access it from anywhere. 
 
